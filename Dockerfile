@@ -19,7 +19,6 @@ ENV GOLANG_BOOTSTRAP_SHA1 486db10dc571a55c8d795365070f66d343458c48
      gcc \
      musl-dev \
      openssl \
-     \
      && mkdir -p /usr/local/bootstrap \
      && wget -q "$GOLANG_BOOTSTRAP_URL" -O golang.tar.gz \
      && echo "$GOLANG_BOOTSTRAP_SHA1  golang.tar.gz" | sha1sum -c - \
@@ -28,7 +27,6 @@ ENV GOLANG_BOOTSTRAP_SHA1 486db10dc571a55c8d795365070f66d343458c48
      && cd /usr/local/bootstrap/go/src \
      && ./make.bash \
      && export GOROOT_BOOTSTRAP=/usr/local/bootstrap/go \
-     \
      && wget -q "$GOLANG_SRC_URL" -O golang.tar.gz \
      && echo "$GOLANG_SRC_SHA256  golang.tar.gz" | sha256sum -c - \
      && tar -C /usr/local -xzf golang.tar.gz \
@@ -36,7 +34,6 @@ ENV GOLANG_BOOTSTRAP_SHA1 486db10dc571a55c8d795365070f66d343458c48
      && cd /usr/local/go/src \
      && patch -p2 -i /no-pic.patch \
      && ./make.bash \
-     \
      && rm -rf /usr/local/bootstrap /usr/local/go/pkg/bootstrap /*.patch \
      && apk del .build-deps
     
