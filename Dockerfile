@@ -1,4 +1,4 @@
-FROM golang:1.6-alpine
+FROM golang:1.7-alpine
 MAINTAINER Raymond Wen
 
 ENV GOPATH /go
